@@ -2,10 +2,8 @@
 function maxOfTwoNumbers(num1, num2) {
   if (num1 > num2) {
     return num1;
-  } else if (num2 > num1) {
-    return num2;
   } else {
-    return num1;
+    return num2;
   }
 }
 
@@ -24,6 +22,15 @@ function findLongestWord(words) {
     }
     return longest;
   }
+
+  // if (!words.length){
+  //   return null;
+  // }
+  // words.map((word) => {
+  //   if(word.length > longest.length) {
+  //     longest = word;
+  //   }
+  // })
 }
 
 // Iteration #3: Calculate the sum
@@ -42,7 +49,25 @@ function sumNumbers(numbers) {
 }
 
 // Iteration #3.1 Bonus:
-function sum() {}
+function sum(array) {
+  return array.reduce((acc, currentElement) => {
+    if (typeof currentElement === 'object') {
+      throw new Error("Unsupported data type sir or ma'am");
+    }
+
+    if (typeof currentElement === 'number') {
+      return acc + currentElement;
+    }
+
+    if (typeof currentElement === 'string') {
+      return acc + currentElement.length;
+    }
+
+    if (typeof currentElement === 'boolean') {
+      return acc + Number(currentElement);
+    }
+  }, 0);
+}
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
@@ -58,10 +83,22 @@ function averageNumbers(numbersAvg) {
 // Level 2: Array of strings
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
-function averageWordLength() {}
+function averageWordLength(wordsArr) {
+  if (wordsArr.length === 0) {
+    return null;
+  }
+
+  return avg(wordsArr);
+}
 
 // Bonus - Iteration #4.1
-function avg() {}
+function avg(array) {
+  if (!array.length === 0) {
+    return null;
+  }
+  const result = sum(array) / array.length;
+  return parseFloat(result.toFixed(2));
+}
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -78,12 +115,39 @@ const wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(wordsArr) {
+  if (!wordsArr.length) {
+    return null;
+  }
+
+  return [...new Set(wordsArr)];
+
+  //   const auxArr = []
+  //   wordsArr.map((currentWord, index) => {
+  //    if (wordsArr.indexOf(currentWord) !== wordsArr.lastIndexOf(currentWord)) {
+  //     return;
+  //    } else {
+  //      auxArr.push(currentWord)
+  //    }
+  // })
+}
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
+function doesWordExist(wordsFind) {
+  if (!wordsFind.length) {
+    return null;
+  } else {
+    wordsFind.map((word) => {
+      if (word) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  }
+}
 
 // Iteration #7: Count repetition
 const wordsCount = [
